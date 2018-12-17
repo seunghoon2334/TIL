@@ -105,6 +105,27 @@ menu[0]
 #=> 중국집
 ```
 
+`list` 는 정렬을 할 수 있다.
+
+```python
+a = [3, 1, 2]
+# 1. sorted
+sorted(a)
+#=> [1, 2, 3] 리턴
+print(a)
+#[3, 1, 2]
+a = sorted(a)
+print(a)
+#[1, 2, 3]
+
+# 2. .sort()
+a.sort()
+#=> None 리턴
+print(a)
+#[1, 2, 3]
+
+```
+
 ### 4) Dictionary
 
 `Dictionary` 는 hash(해시)라고도 불린다. `key` 와 `value` 가 짝지어져있다.
@@ -227,10 +248,6 @@ random.sample(리스트,갯수)
 
 
 
-
-
-
-
 append() 삽입
 
 
@@ -271,11 +288,12 @@ $ git config --system --unset credential.help
 $ git config --global user.name "내 이름"
 $ git config --global user.email "내 이메일"
 $ git config --global --list
+
+$ git init #여기서 git을 관리할거야
+$ git status
+$ git add . (.리눅스 상에서 현재 디렉토리)
+$ git commit -m "" 메시지를 쓰겠다
 ```
-
-
-
-
 
 
 
