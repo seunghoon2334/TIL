@@ -76,3 +76,14 @@ $ git remote add origin https://github.com/seunghoon2334/TIL.git
 $ git push -u origin master
 ```
 
+
+
+```
+$ git status
+$ git init
+$ git add
+$ git commit
+$ git push 
+☆소스코드 이력 관리
+```
+
