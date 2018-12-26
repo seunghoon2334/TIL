@@ -87,3 +87,11 @@ $ git push
 ☆소스코드 이력 관리
 ```
 
+
+
+commit 수정
+
+> git commit --amend -m "no.1 Webisfree.com 블로그페이지 이슈수정
+>
+>  git log -1 로그 보기
+
