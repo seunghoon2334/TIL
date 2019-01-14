@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+        p {
+            font-weight: bold;
+        }
+        </style>
+    </head>
+    <body>
+        <form>
+            <h1>FORM</h1>
+            <p>주문서를 작성하여 주십시오</p><br>
+            지점명 <input type="text" value="덕명점" readonly><br>
+            이름 : <input type="text" placeholder="이름을 입력해주세요" required autofocus><br>
+            날짜 : <input type="date" placeholder="2019. 01. 03.">
+
+            <h2><strong>1. 샌드위치 선택</strong></h2>
+            <input type="radio" name="sandwitch" checked>에그 마요<br>
+            <input type="radio" name="sandwitch">이탈리안 비엠티<br>
+            <input type="radio" name="sandwitch">터키 베이컨 아보카도<br>
+            <hr>
+            <h2>2. 사이즈 선택</h2>
+            <input type="number" min="15" max="30" step="15" required>
+            <hr>
+            <h2>3. 빵</h2>
+            <select name="bread">
+                <option value="1" selected>허니오트</option>
+                <option value="2" disabled>플랫브레드</option>
+                <option value="3">하티 이탈리안</option>
+            </select>
+            <hr>
+            <h2>4. 야채/소스</h2>
+            <input type="checkbox" name="option" value="1">토마토<br>
+            <input type="checkbox" name="option" value="2">오이<br>
+            <input type="checkbox" name="option" value="3">할라피뇨<br>
+            <input type="checkbox" name="option" value="4">핫 칠리<br>
+            <input type="checkbox" name="option" value="5">바베큐<br>
+            <input type="submit" value="submit">
+        </form>
+
+        <form action="https://google.com/search">
+            <input name="q"><br>
+            <input type="submit" value="구글검색">
+        </form>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/aiCk8eA_nGQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/314406555&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+    </body>
+</html>

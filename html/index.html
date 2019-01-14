@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>HTML연습</title>
+        <style>
+            body {
+                height: 10000px;
+            }
+            table, tr, td {
+                border: 1px solid skyblue;
+            }
+        </style><!--구분선 주기--> <!--text-align: center;--><!--color: dasfasjdfl;-->
+    </head>
+    <body>
+        <a href="#a">링크로 가기</a>
+        <!-- 여기는 주석입니다. -->
+        <h1 id="heading">heading1</h1>
+        <h2>2</h2>
+        <h3>3</h3>
+        <h4>4</h4>
+        <h5>5</h5>
+        <h6>6</h6>
+        <p>p태그를 사용하면 한줄 아래에서 작성가능합니다.</p>
+        <p><b>Lorem ipsum</b> dolor sit amet consectetur, adipisicing elit. Numquam neque debitis consectetur officia? Quia, hic? Corporis, illum tempora nam pariatur vitae inventore vero tenetur, laboriosam eos laborum blanditiis veritatis ab?</p>
+        <br> <!--엔터-->
+        <hr> <!--선 쫙-->
+        <p>위에 작성한 것은 <strong>Lorem Ipsum</strong>으로 임의의 문자열을 나타냅니다.</p>
+        <strong>strong태그와 b태그는 모두 bold체를 표현한다.</strong>
+        <em>이탤릭체도 작성가능합니다.</em>
+        <i>i로도 작성 가능합니다. 다만, em이 시맨틱한 의미를 가지고 있습니다.</i>
+        <p><del>취소선을 나타냅니다.</del></p> <!--글 위에 취소선 쫙-->
+        <p><mark>하이라이팅</mark>도 가능합니다.</p> <!--기본 노란색-->
+        <p>log<sub>10</sub>10</p>
+        <p>2<sup>3</sup></p>
+        <p>아&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;아</p>
+        <pre> <!--문자 그대로 표현하기 위해 사용-->
+            import random
+            random.sample(range(1,46), 6)
+            띄         어     쓰    기
+        </pre>
+        <q id="q">안녕하세요, 인용문입니다. 짧을 때 사용해요.</q>
+        <blockquote>인용문이지만, 긴 문장입니다.
+            아마도 들여쓰기가 기본적으로 적용됩니다. 
+            엔터는 불가
+        </blockquote>
+        <ul>
+            <li>순서가 없습니다.</li>
+            <li style="list-style-type: square">뿡뿡이</li>
+            <li>붕붕이</li>
+        </ul>
+        <ol>
+            <li>1교시</li>
+            <li>2교시</li>
+            <!--li*6 후 탭-->
+            <li>3교시!</li>
+            <li>4교시!</li>
+            <li>5교시!</li>
+            <li>6교시!</li>
+            <li>7교시!</li>
+            <li>8교시!</li>
+            <!--컨트롤+알트 누르면 여러곳 한번에 수정가능-->
+        <!--reversed:거꾸로, start="":몇번부터 시작, type="a":a부터시작-->
+        <ol reversed>
+            <li>1교시</li>
+            <li>2교시</li>
+            <li>3교시</li>
+            <li value="10">4교시</li> <!--여기부터 10부터-->
+            <li>5교시</li>
+        </ol>
+        </ol>
+        <!--ul>li*3 탭-->
+        <!--emmet-->
+        <ul>
+            <li>사과</li>
+            <li>바나나</li>
+            <li>딸기</li>
+        </ul>
+        <a href="https://google.com">구글로 가기</a>
+        <a href="https://google.com" target="_blank">새창으로 구글로 가기</a>
+        <a href="https://google.com" target="_self">여기에서 구글로 가기</a>
+        <a href="#heading">상단으로 가기</a>
+        <a href="#q">인용문으로 가기</a>
+        <a href="hello.html" target="_blank">hello, world!</a>
+        <a href="templates/test.html">test</a>
+        <a href="mailto:t@t.t">메일 보내기</a>
+        <img href="https://www.google.com/" alt="GOOGLE">
+        <form action="https://www.ssafy.com/">
+            <input type="submit" value="ssafy">
+        </form>
+        <table> <!--tr*2>td*2-->
+            <tr>
+                <th colspan="2">표 실습</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td colspan="2">1</td>>
+            </tr>
+            <tr> <!--tr:vvvvv,td:>>>>>-->
+                <td rowspan="2">4</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>3</td>
+            </tr><!--td scope="col" , "row" ??-->
+        </table>
+        <hr>
+        <h2>Form input</h2>
+        <form action="https://search.naver.com/search.naver" method="get">
+            일반텍스트 : <input name="username" type="text" placeholder="뿡뿡이" autofocus><br>
+            이메일 : <input type="email" placeholder="이메일을 입력해주세요" autocomlete="email"><br>
+            비밀번호 : <input type="password" placeholder="비밀번호를 입력해주세요"><br>
+            날짜 : <input type="date">
+            <input type="hidden" name="hidden" value="이 사람은 누구">
+            <input type="submit" value="전송"><br>
+            <!--raido button-->
+            <input type="radio" name="gender" value="male"> 남자
+            <input type="radio" name="gender" value="female" checked> 여자<br>
+            <!--checkbox-->
+            <input type="checkbox" name="option"value="1">IU<br>
+            <input type="checkbox" name="option"value="2">UI<br>
+            <input type="checkbox" name="option"value="3">AI<br>
+            <!--dropdown-->
+            <select name="menu">
+                <option value="korea">한식</option>
+                <option value="japan" disabled>일식</option>
+                <option value="china">중식</option>
+                <option value="europe" selected>양식</option>
+            </select>
+            <input name="number" type="range" min="0" max="100" step="10">
+            <a href="https://www.w3schools.com/tags/att_input_type.asp">html input type attribute</a>
+            <br>ID : <input name="ID" type="text" placeholder="user"><br>
+            PWD : <input type="password" placeholder="****"><input type="submit" value="로그인"><br>
+        </form>
+        <imag></imag>
+        <imag href="C:\TIL\SSAFY\Image\my_photo.png" id="photo"></imag>
+        <a href="#photo">내 사진</a>
+    </body>
+</html>
