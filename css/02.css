@@ -1,0 +1,25 @@
+/* id>class>tag>*/
+* {
+    color: red;
+}
+
+h1 {
+    color: blue;
+}
+
+.pink {
+    color: pink !important;
+}/* 순서 무시 가장 중요 !important */
+
+#yellow {
+    color: yellow;
+}
+h2 {
+    color: white;
+}
+.blue {
+    color: blue;
+}
+.bold {
+    font-weight: bold;
+}

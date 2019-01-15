@@ -1,0 +1,58 @@
+.square {
+    width: 100px;
+    height: 100px;
+    background-color: paleturquoise;
+}
+
+.padding-10 {
+    padding: 10px;
+}
+
+.border-box {
+    box-sizing: border-box;
+}
+
+.margin-100 {
+    margin: 100px;
+}
+
+.margin-top-100 {
+    margin-top: 100px;
+}/* top right bottom left */
+
+.margin-50 {
+    margin: 10px 20px 30px 40px;
+}
+
+.margin-3 {
+    /* top left,right bottom */
+    margin: 10px 20px 30px;
+}
+
+.margin-2 {
+    /* top,bottom left,right */
+    margin: 10px 20px;
+}
+
+.border {
+    /* border: 2px solid aqua (두꼐 스타일 색깔) */
+    border-style: dashed;
+    border-bottom-style: double;
+    border-top-style: solid;
+    border-left-style: inset;
+    border-bottom-color: aqua;
+}
+
+.circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    background-color: wheat;
+}
+
+.football {
+    width: 90px;
+    height: 90px;
+    background-color: brown;
+    border-radius: 15px 75px;
+}

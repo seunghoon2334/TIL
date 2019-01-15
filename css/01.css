@@ -1,0 +1,19 @@
+html {
+    font-size: 20px;
+}
+ol, ol li {
+    font-size: 1.2rem;
+}
+/* 주석 */
+ul, ul li {
+    font-size: 1.2em;
+}
+.vh {
+    font-size: 5vh;
+}
+.vw {
+    font-size: 5vw;
+}
+.vmin {
+    font-size: 10vmin;
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="02.css">
+</head><!--상위 경로 ../-->
+<body>
+    <p>빨간색</p>
+    <h1>Tag 선택자</h1>
+    <h2 class="pink">클래스 선택자</h2>
+    <h3 id="yellow">id 선택자</h3>
+    <h3 id="yellow" class="pink">yellow</h3>
+    <h2 class="pink" id="yellow">id > class > tag > *</h2>
+    <!-- css를 적용시키기 위해서는 마크업을 하고 선택자를 부여한다.
+    span, div태그는 의미는 없지만 css 적용을 위해서 활용한다.
+    -->
+    <p><span class="pink">핑크색</span>, 
+        <span id="yellow">노란색</span></p>
+    <p class="bold blue pink">볼드체</p><!-- css 코드 상의 순서가 뒤에 있는것으로 덮어씌움-->
+    <p><strong>볼드체</strong></p>
+    <p><b>볼드체</b></p>
+</body>
+</html>
