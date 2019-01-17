@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open("view_input.txt")
+sys.stdin = open("190116view_input.txt")
 
 def max_data(d1, d2, d3, d4):
     maxd = d1
