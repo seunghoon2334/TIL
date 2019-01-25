@@ -1,0 +1,745 @@
+# 01_layout.html
+
+```html
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>영화추천사이트</title>
+    <link rel="stylesheet" href="01_layout.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+</head>
+
+<body> <!--맨 위에 네비게이션 바를 만들어 고정시켜둠-->
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-black">
+        <a class="navbar-brand" href="#">영화추천시스템</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">친구 평점 보러가기</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Log in</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="section text-center">
+        <br><br><br><br><br><br>
+        <h2>당신에게 어울리는 영화를<br>추천해드립니다.</h2>
+        <br><br><br><br><br>
+    </div>
+<!--하단에 고정-->
+    <nav class="navbar navbar-expand-lg relative-bottom navbar-light bg-light">
+        <a class="nav-link disabled" href="#">김승훈</a>
+        <a class="btn btn-light ml-auto" href="#" role="button">뿍</a>
+    </nav>
+
+
+<!--css 사용하기 위한 기본 코드-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
+```
+
+
+
+## 01_layout.css
+
+```css
+body {
+    height: 10000px;
+} /*휠 만들기*/
+
+h2 {
+    line-height: 300px;
+    font-style: oblique;
+    font-weight: bold;
+}
+
+.section {
+    font-style: italic;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    height: 350px;
+    width: 100%;
+    background-image: url('bono.jpg');
+    background-size: cover;
+}/*배경에 사진 추가*/
+
+
+```
+
+
+
+
+
+# 02_movie.html
+
+```html
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>영화추천사이트</title>
+    <link rel="stylesheet" href="01_layout.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-black">
+        <a class="navbar-brand" href="#">영화추천시스템</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" target="_blank">친구 평점 보러가기</a> <!--target설정으로 새창에서 링크 열기-->
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Log in</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h3 class="text-center">영화 목록</h3>
+        <hr width="120px" color="yellow"><!--hr태그 길이와 색 조정-->
+        <br>
+        <div class="row"><!--컨테이너 안에 카드들이 화면 크기에 따라 배열이 달라지도록 설정-->
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                <div class="card" style="width: 18rem; margin-top: 1rem; margin-bottom: 1rem;">
+                    <img data-target="#movie-1-modal" data-toggle="modal" src="20184105.jpg" class="card-img-top" alt="말모이"
+                        style="cursor:pointer">
+                    <div class="card-body mr-auto">
+                        <h4 class="card-title">말모이 <a class="btn btn-info disabled" style="color: white;">9.04</a></h4>
+                        <hr width="160%">
+                        <p class="card-text">드라마<br>
+                            개봉일 : 2019.01.09.
+                        </p>
+                        <a href="https://movie.naver.com/movie/bi/mi/basic.nhn?code=167699" class="btn btn-success" target="_blank">영화정보
+                            보러가기<!--a태그를 이용한 링크 이동-->
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                <div class="card" style="width: 18rem; margin-top: 1rem; margin-bottom: 1rem;">
+                    <img data-target="#movie-2-modal" data-toggle="modal" src="20176251.jpg" class="card-img-top" alt="내안의그놈"
+                        style="cursor:pointer">
+
+                    <div class="card-body mr-auto">
+                        <h4 class="card-title">내안의 그놈 <a class="btn btn-dark disabled" style="color: white;">8.69</a></h4>
+                        <hr width="136%">
+                        <p class="card-text">판타지<br>
+                            개봉일 : 2019.01.09.
+                        </p>
+                        <a href="https://movie.naver.com/movie/bi/mi/basic.nhn?code=164172" class="btn btn-success" target="_blank">영화정보
+                            보러가기
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                <div class="card" style="width: 18rem; margin-top: 1rem; margin-bottom: 1rem">
+                    <img data-target="#movie-3-modal" data-toggle="modal" src="20182544.jpg" class="card-img-top" alt="글래스"
+                        style="cursor:pointer">
+                    <div class="card-body mr-auto">
+                        <h4 class="card-text">글래스 <a class="btn btn-dark disabled" style="color: white;">7.69</a></h4>
+                        <hr width="160%">
+                        <p class="card-text">드라마<br>
+                            개봉일 : 2019.01.17.
+                        </p>
+                        <a href="https://movie.naver.com/movie/bi/mi/basic.nhn?code=163826" class="btn btn-success" target="_blank">영화정보
+                            보러가기</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                <div class="card" style="width: 18rem; margin-top: 1rem; margin-bottom: 1rem">
+                    <img data-target="#movie-4-modal" data-toggle="modal" src="20189463.jpg" class="card-img-top" alt="주먹왕랄프2"
+                        style="cursor:pointer">
+                    <div class="card-body mr-auto">
+                        <h4 class="card-title">주먹왕 랄프 <a class="btn btn-dark disabled" style="color: white;">8.76</a></h4>
+                        <hr width="136%">
+                        <p class="card-text">애니메이션<br>
+                            개봉일 : 2019.01.03.
+                        </p>
+                        <a href="https://movie.naver.com/movie/bi/mi/basic.nhn?code=152632" class="btn btn-success" target="_blank">영화정보
+                            보러가기
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                <div class="card" style="width: 18rem; margin-top: 1rem; margin-bottom: 1rem">
+                    <img data-target="#movie-4-modal" data-toggle="modal" src="20186324.jpg" class="card-img-top" alt="언더독"
+                        style="cursor:pointer">
+                    <div class="card-body mr-auto">
+                        <h4 class="card-title">언더독 <a class="btn btn-dark disabled" style="color: white;">9.49</a></h4>
+                        <hr width="160%">
+                        <p class="card-text">애니메이션<br>
+                            개봉일 : 2019.01.16.
+                        </p>
+                        <form action="https://movie.naver.com/movie/bi/mi/basic.nhn?code=144318">
+                            <input href="#" type="submit" class="btn btn-success" value="영화정보 보러가기"></a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                <div class="card" style="width: 18rem; margin-top: 1rem; margin-bottom: 1rem">
+                    <img data-target="#movie-4-modal" data-toggle="modal" src="20180290.jpg" class="card-img-top" alt="아쿠아맨"
+                        style="cursor:pointer">
+                    <div class="card-body mr-auto">
+                        <h4 class="card-title">아쿠아맨 <a class="btn btn-dark disabled" style="color: white;">8.39</a></h4>
+                        <hr width="160%">
+                        <p class="card-text">액션<br>
+                            개봉일 : 2018.12.19.
+                        </p>
+                        <a href="https://movie.naver.com/movie/bi/mi/basic.nhn?code=144318" class="btn btn-success" target="_blank">영화정보
+                            보러가기
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg fixed-bottom navbar-light bg-light">
+        <a class="nav-link disabled" href="#">김승훈</a>
+        <a class="btn btn-light ml-auto" href="#" role="button">뿍</a>
+    </nav>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
+```
+
+
+
+## 02_movie.css
+
+```css
+h3 {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+```
+
+
+
+# 03_detail_view.html
+
+```html
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>영화추천사이트</title>
+    <link rel="stylesheet" href="01_layout.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-black">
+        <a class="navbar-brand" href="#">영화추천시스템</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">친구 평점 보러가기</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Log in</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h3 class="text-center">영화 목록</h3>
+        <hr width="120px" color="yellow">
+        <br>
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                <div class="card" style="width: 18rem; margin-top: 1rem; margin-bottom: 1rem;">
+                    <img data-target="#movie-1-modal" data-toggle="modal" src="20184105.jpg" class="card-img-top" alt="말모이"
+                        style="cursor:pointer">
+                    <div class="modal fade" id="movie-1-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">말모이, MAL·MO·E: The Secret Mission</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <!--carousel을 이용하여 modal의 그림들을 넘기기 가능-->
+                                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <img src="20184105-1.jpg" class="d-block w-100" alt="말모이">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="20184105-2.jpg" class="d-block w-100" alt="말모이">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="20184105-3.jpg" class="d-block w-100" alt="말모이">
+                                            </div>
+                                        </div>
+                                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                                            data-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                                            data-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </div>
+                                    <!-- <img data-target="#movie-1-modal" data-toggle="modal" src="20184105-1.jpg" class="card-img-top"
+                                    alt="말모이"> -->
+                                    <p>12세이상관람가<br>누적 관객수 : 2,224,910<br>
+                                        <hr><br>까막눈 판수, 우리말에 눈뜨다!vs조선어학회 대표 정환, '우리'의 소중함에 눈뜨다!<br><br>1940년대 우리말이 점점
+                                        사라져가고
+                                        있는 경성.얼마 남지 않은 시간, 바짝 조여오는 일제의 감시를 피해 '말모이'를 끝내야 하는데...우리말이 금지된 시대, 말과 마음이 모여
+                                        사전이
+                                        되다.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body mr-auto">
+                        <h4 class="card-title">말모이 <a class="btn btn-info disabled" style="color: white;">9.04</a></h4>
+                        <hr width="160%">
+                        <p class="card-text">드라마<br>
+                            개봉일 : 2019.01.09.
+                        </p>
+                        <a href="https://movie.naver.com/movie/bi/mi/basic.nhn?code=167699" class="btn btn-success" target="_blank">영화정보
+                            보러가기
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                <div class="card" style="width: 18rem; margin-top: 1rem; margin-bottom: 1rem;">
+                    <img data-target="#movie-2-modal" data-toggle="modal" src="20176251.jpg" class="card-img-top pointer"
+                        alt="내안의그놈" style="cursor:pointer">
+                    <div class="modal fade" id="movie-2-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">내안의 그놈, The Dude in Me</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div id="carouselExampleControls2" class="carousel slide" data-ride="carousel">
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <img src="20176251-1.jpg" class="d-block w-100" alt="내안의 그놈">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="20176251-2.jpg" class="d-block w-100" alt="내안의 그놈">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="20176251-3.jpg" class="d-block w-100" alt="내안의 그놈">
+                                            </div>
+                                        </div>
+                                        <a class="carousel-control-prev" href="#carouselExampleControls2" role="button"
+                                            data-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#carouselExampleControls2" role="button"
+                                            data-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </div>
+                                    <!-- <img data-target="#movie-2-modal" data-toggle="modal" src="20176251-1.jpg" class="card-img-top"
+                                    alt="내안의 그놈"> -->
+                                    <p>15세이상관람가<br>누적 관객수 : 1,783,816<br>
+                                        <hr><br>
+                                        <p class="boldd">나 너니? 너 나니??</p><br>
+                                        제대로 바뀐 아재와 고딩, 웃음 대환장 파티!<br>
+                                        엘리트 아재 판수(박성웅)를 우연히 옥상에서 떨어진 고등학생 동현(진영)이 덮치면서 제대로 바뀐다. <br>
+                                        게다가 판수는 동현의 몸으로 첫사랑 미선(라미란)과 존재도 몰랐던 딸 현정(이수민)을 만나게 되는데… <br>
+                                        대유잼의 향연, 넌 이미 웃고 있다!
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body mr-auto">
+                        <h4 class="card-title">내안의 그놈 <a class="btn btn-dark disabled" style="color: white;">8.69</a></h4>
+                        <hr width="136%">
+                        <p class="card-text">판타지<br>
+                            개봉일 : 2019.01.09.
+                        </p>
+                        <a href="https://movie.naver.com/movie/bi/mi/basic.nhn?code=164172" class="btn btn-success" target="_blank">영화정보
+                            보러가기
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                <div class="card" style="width: 18rem; margin-top: 1rem; margin-bottom: 1rem">
+                    <img data-target="#movie-3-modal" data-toggle="modal" src="20182544.jpg" class="card-img-top" alt="글래스"
+                        style="cursor:pointer">
+                    <div class="modal fade" id="movie-3-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">글래스, Glass</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div id="carouselExampleControls3" class="carousel slide" data-ride="carousel">
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <img src="20182544-1.jpg" class="d-block w-100" alt="글래스">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="20182544-2.jpg" class="d-block w-100" alt="글래스">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="20182544-3.jpg" class="d-block w-100" alt="글래스">
+                                            </div>
+                                        </div>
+                                        <a class="carousel-control-prev" href="#carouselExampleControls3" role="button"
+                                            data-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#carouselExampleControls3" role="button"
+                                            data-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </div>
+                                    <!-- <img data-target="#movie-3-modal" data-toggle="modal" src="20182544-1.jpg" class="card-img-top"
+                                    alt="글래스"> -->
+                                    <p>15세이상관람가<br>누적 관객수 : 339,707<br>
+                                        <hr><br>24개의 인격, 강철 같은 신체, 천재적 두뇌<br><br>통제불가한 24번째 인격 비스트를 깨운 케빈,<br><br>강철 같은
+                                        신체
+                                        능력을
+                                        지닌
+                                        의문의 남자 던,<br<br>>천재적 두뇌를 지닌 미스터리한 설계자 미스터 글래스,<br><br>마침내 그들이 한 자리에 모이게 되고 이들의
+                                            존재가
+                                            세상에
+                                            드러나면서 예상치 못한 일이 벌어지는데......</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body mr-auto">
+                        <h4 class="card-text">글래스 <a class="btn btn-dark disabled" style="color: white;">7.69</a></h4>
+                        <hr width="160%">
+                        <p class="card-text">드라마<br>
+                            개봉일 : 2019.01.17.
+                        </p>
+                        <a href="https://movie.naver.com/movie/bi/mi/basic.nhn?code=163826" class="btn btn-success" target="_blank">영화정보
+                            보러가기</a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                <div class="card" style="width: 18rem; margin-top: 1rem; margin-bottom: 1rem">
+                    <img data-target="#movie-4-modal" data-toggle="modal" src="20189463.jpg" class="card-img-top" alt="주먹왕랄프2"
+                        style="cursor:pointer">
+                    <div class="modal fade" id="movie-4-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">주먹왕 랄프2:인터넷 속으로, Ralph Breaks the
+                                        Internet</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div id="carouselExampleControls4" class="carousel slide" data-ride="carousel">
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <img src="20189463-1.jpg" class="d-block w-100" alt="주먹왕랄프2">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="20189463-2.jpg" class="d-block w-100" alt="주먹왕랄프2">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="20189463-3.jpg" class="d-block w-100" alt="주먹왕랄프2">
+                                            </div>
+                                        </div>
+                                        <a class="carousel-control-prev" href="#carouselExampleControls4" role="button"
+                                            data-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#carouselExampleControls4" role="button"
+                                            data-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </div>
+                                    <!-- <img data-target="#movie-4-modal" data-toggle="modal" src="20189463-1.jpg" class="card-img-top"
+                                    alt="주먹왕 랄프"> -->
+                                    <p>전체 관람가<br>누적 관객수 : 1,665,215<br>
+                                        <hr><br>각종 사고를 치며 게임 속 세상을 뒤집어 놨던 절친 주먹왕 ‘랄프’와 ‘바넬로피’는<br>
+                                        버려질 위기에 처한 오락기 부품을 구하기 위해 와이파이를 타고 인터넷 세상에 접속한다. <br><br>
+
+                                        얼떨결에 올린 동영상으로 순식간에 핵인싸에 등극한 ‘랄프’와<br>
+                                        룰도 트랙도 없는 스릴만점 슬로터 레이스 게임에 참여하게 된 ‘바넬로피’ <br><br>
+
+                                        지금껏 경험한 적 없는 엄청난 스케일과 새로운 재미에 흠뻑 빠진 <br>
+                                        ‘랄프’와 ‘바넬로피’는 랜섬웨어급 사고로 인터넷 세상을 혼란에 빠뜨리는데…<br><br>
+
+                                        과연, 이들은 무사히 집에 돌아갈 수 있을까?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body mr-auto">
+                        <h4 class="card-title">주먹왕 랄프 <a class="btn btn-dark disabled" style="color: white;">8.76</a></h4>
+                        <hr width="136%">
+                        <p class="card-text">애니메이션<br>
+                            개봉일 : 2019.01.03.
+                        </p>
+                        <a href="https://movie.naver.com/movie/bi/mi/basic.nhn?code=152632" class="btn btn-success" target="_blank">영화정보
+                            보러가기
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                <div class="card" style="width: 18rem; margin-top: 1rem; margin-bottom: 1rem">
+                    <img data-target="#movie-5-modal" data-toggle="modal" src="20186324.jpg" class="card-img-top" alt="언더독"
+                        style="cursor:pointer">
+                    <div class="modal fade" id="movie-5-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">언더독, Underdog</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div id="carouselExampleControls5" class="carousel slide" data-ride="carousel">
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <img src="20186324-1.jpg" class="d-block w-100" alt="언더독">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="20186324-2.jpg" class="d-block w-100" alt="언더독">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="20186324-3.jpg" class="d-block w-100" alt="언더독">
+                                            </div>
+                                        </div>
+                                        <a class="carousel-control-prev" href="#carouselExampleControls5" role="button"
+                                            data-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#carouselExampleControls5" role="button"
+                                            data-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </div>
+                                    <!-- <img data-target="#movie-5-modal" data-toggle="modal" src="20186324-1.jpg" class="card-img-top"
+                                    alt="언더독"> -->
+                                    <p>전체 관람가<br>누적 관객수 : 122,479<br>
+                                        <hr><br>"견생역전을 꿈꾸는 댕댕이들의 위대한 모험이 시작된다!
+                                        하루아침에 운명이 바뀐 강아지 ‘뭉치’는 우연히 만난 거리 생활의 고참 ‘짱아’ 일당을 만나 목숨을 구하게 된다.
+                                        차츰 ‘짱아’ 무리의 스트릿 라이프에 적응하던 찰나 그들의 소중한 아지트가 사라질 위기에 처하고,
+                                        마침내 그들은 진정한 자유를 찾기 위한 모험을 떠나기로 결심하는데…"</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body mr-auto">
+                        <h4 class="card-title">언더독 <a class="btn btn-dark disabled" style="color: white;">9.49</a></h4>
+                        <hr width="160%">
+                        <p class="card-text">애니메이션<br>
+                            개봉일 : 2019.01.16.
+                        </p>
+                        <a href="https://movie.naver.com/movie/bi/mi/basic.nhn?code=144318" class="btn btn-success" target="_blank">영화정보
+                            보러가기
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                <div class="card" style="width: 18rem; margin-top: 1rem; margin-bottom: 1rem">
+                    <img data-target="#movie-6-modal" data-toggle="modal" src="20180290.jpg" class="card-img-top" alt="아쿠아맨"
+                        style="cursor:pointer">
+                    <div class="modal fade" id="movie-6-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">아쿠아맨, AQUAMAN</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div id="carouselExampleControls6" class="carousel slide" data-ride="carousel">
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <img src="20180290-1.jpg" class="d-block w-100" alt="아쿠아맨">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="20180290-2.jpg" class="d-block w-100" alt="아쿠아맨">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="20180290-3.jpg" class="d-block w-100" alt="아쿠아맨">
+                                            </div>
+                                        </div>
+                                        <a class="carousel-control-prev" href="#carouselExampleControls6" role="button"
+                                            data-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#carouselExampleControls6" role="button"
+                                            data-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </div>
+                                    <!-- <img data-target="#movie-6-modal" data-toggle="modal" src="20180290-1.jpg" class="card-img-top"
+                                    alt="아쿠아맨"> -->
+                                    <p>12세이상관람가<br>누적 관객수 : 5,019,236<br>
+                                        <hr><br>땅의 아들이자 바다의 왕, 심해의 수호자인 슈퍼히어로 아쿠아맨의 탄생을 그린 액션 블록버스터</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body mr-auto">
+                        <h4 class="card-title">아쿠아맨 <a class="btn btn-dark disabled" style="color: white;">8.39</a></h4>
+                        <hr width="160%">
+                        <p class="card-text">액션<br>
+                            개봉일 : 2018.12.19.
+                        </p>
+                        <a href="https://movie.naver.com/movie/bi/mi/basic.nhn?code=151153" class="btn btn-success">영화정보
+                            보러가기
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg fixed-bottom navbar-light bg-light">
+        <a class="nav-link disabled" href="#">김승훈</a>
+        <a class="btn btn-light ml-auto" href="#" role="button">뿍</a>
+    </nav>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
+```
+
+
+
+## 03_detail_view.css
+
+```css
+.pointer {
+    style: cursor: pointer;
+}
+/*pointer 클래스 위에 마우스를 올리면 모양이 바뀜*/
+
+h3 {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+```
+
+
+

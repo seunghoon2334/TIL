@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>영화추천사이트</title>
+    <link rel="stylesheet" href="01_layout.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-black">
+        <a class="navbar-brand" href="#">영화추천시스템</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">친구 평점 보러가기</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Log in</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h3 class="text-center">영화 목록</h3>
+        <hr width="120px" color="yellow">
+        <br>
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                <div class="card" style="width: 18rem; margin-top: 1rem; margin-bottom: 1rem;">
+                    <img data-target="#movie-1-modal" data-toggle="modal" src="20184105.jpg" class="card-img-top" alt="말모이"
+                        style="cursor:pointer">
+                    <div class="card-body mr-auto">
+                        <h4 class="card-title">말모이 <a class="btn btn-info disabled" style="color: white;">9.04</a></h4>
+                        <hr width="160%">
+                        <p class="card-text">드라마<br>
+                            개봉일 : 2019.01.09.
+                        </p>
+                        <a href="https://movie.naver.com/movie/bi/mi/basic.nhn?code=167699" class="btn btn-success" target="_blank">영화정보
+                            보러가기
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                <div class="card" style="width: 18rem; margin-top: 1rem; margin-bottom: 1rem;">
+                    <img data-target="#movie-2-modal" data-toggle="modal" src="20176251.jpg" class="card-img-top" alt="내안의그놈"
+                        style="cursor:pointer">
+
+                    <div class="card-body mr-auto">
+                        <h4 class="card-title">내안의 그놈 <a class="btn btn-dark disabled" style="color: white;">8.69</a></h4>
+                        <hr width="136%">
+                        <p class="card-text">판타지<br>
+                            개봉일 : 2019.01.09.
+                        </p>
+                        <a href="https://movie.naver.com/movie/bi/mi/basic.nhn?code=164172" class="btn btn-success" target="_blank">영화정보
+                            보러가기
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                <div class="card" style="width: 18rem; margin-top: 1rem; margin-bottom: 1rem">
+                    <img data-target="#movie-3-modal" data-toggle="modal" src="20182544.jpg" class="card-img-top" alt="글래스"
+                        style="cursor:pointer">
+                    <div class="card-body mr-auto">
+                        <h4 class="card-text">글래스 <a class="btn btn-dark disabled" style="color: white;">7.69</a></h4>
+                        <hr width="160%">
+                        <p class="card-text">드라마<br>
+                            개봉일 : 2019.01.17.
+                        </p>
+                        <a href="https://movie.naver.com/movie/bi/mi/basic.nhn?code=163826" class="btn btn-success" target="_blank">영화정보
+                            보러가기</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                <div class="card" style="width: 18rem; margin-top: 1rem; margin-bottom: 1rem">
+                    <img data-target="#movie-4-modal" data-toggle="modal" src="20189463.jpg" class="card-img-top" alt="주먹왕랄프2"
+                        style="cursor:pointer">
+                    <div class="card-body mr-auto">
+                        <h4 class="card-title">주먹왕 랄프 <a class="btn btn-dark disabled" style="color: white;">8.76</a></h4>
+                        <hr width="136%">
+                        <p class="card-text">애니메이션<br>
+                            개봉일 : 2019.01.03.
+                        </p>
+                        <a href="https://movie.naver.com/movie/bi/mi/basic.nhn?code=152632" class="btn btn-success" target="_blank">영화정보
+                            보러가기
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                <div class="card" style="width: 18rem; margin-top: 1rem; margin-bottom: 1rem">
+                    <img data-target="#movie-4-modal" data-toggle="modal" src="20186324.jpg" class="card-img-top" alt="언더독"
+                        style="cursor:pointer">
+                    <div class="card-body mr-auto">
+                        <h4 class="card-title">언더독 <a class="btn btn-dark disabled" style="color: white;">9.49</a></h4>
+                        <hr width="160%">
+                        <p class="card-text">애니메이션<br>
+                            개봉일 : 2019.01.16.
+                        </p>
+                        <form action="https://movie.naver.com/movie/bi/mi/basic.nhn?code=144318">
+                            <input href="#" type="submit" class="btn btn-success" value="영화정보 보러가기"></a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                <div class="card" style="width: 18rem; margin-top: 1rem; margin-bottom: 1rem">
+                    <img data-target="#movie-4-modal" data-toggle="modal" src="20180290.jpg" class="card-img-top" alt="아쿠아맨"
+                        style="cursor:pointer">
+                    <div class="card-body mr-auto">
+                        <h4 class="card-title">아쿠아맨 <a class="btn btn-dark disabled" style="color: white;">8.39</a></h4>
+                        <hr width="160%">
+                        <p class="card-text">액션<br>
+                            개봉일 : 2018.12.19.
+                        </p>
+                        <a href="https://movie.naver.com/movie/bi/mi/basic.nhn?code=144318" class="btn btn-success" target="_blank">영화정보
+                            보러가기
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg fixed-bottom navbar-light bg-light">
+        <a class="nav-link disabled" href="#">김승훈</a>
+        <a class="btn btn-light ml-auto" href="#" role="button">뿍</a>
+    </nav>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
