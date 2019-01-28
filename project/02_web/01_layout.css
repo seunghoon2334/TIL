@@ -14,7 +14,9 @@ h2 {
     padding-right: 3rem;
     height: 350px;
     width: 100%;
-    background-image: url('bono.jpg');
+    background-image: url('bono.jpg'),
+        linear-gradient(green, aqua);
     background-size: cover;
+    background-blend-mode: saturation;
+    filter: grayscale(10%);
 }
-

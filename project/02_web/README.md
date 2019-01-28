@@ -81,8 +81,12 @@ h2 {
     padding-right: 3rem;
     height: 350px;
     width: 100%;
-    background-image: url('bono.jpg');
+    background-image: url('bono.jpg'),
+    	linear-gradient(green, yellow);
     background-size: cover;
+    /* background-blend-mode: saturation; */
+    background-blend-mode: difference;
+    filter: grayscale(10%); /*보노보노에 필터를 씌우기*/
 }/*배경에 사진 추가*/
 
 
@@ -103,7 +107,7 @@ h2 {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>영화추천사이트</title>
-    <link rel="stylesheet" href="01_layout.css">
+    <link rel="stylesheet" href="02_layout.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
         crossorigin="anonymous">
 </head>
@@ -278,6 +282,7 @@ h3 {
     <link rel="stylesheet" href="01_layout.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
         crossorigin="anonymous">
+    <link rel="shortcut icon" href="bono.jpg"> <!--favicon아이콘 추가-->
 </head>
 
 <body>
@@ -301,6 +306,12 @@ h3 {
             </ul>
         </div>
     </nav>
+    <div class="section text-center">
+        <br><br><br><br><br><br>
+        <h2>당신에게 어울리는 영화를<br>추천해드립니다.</h2>
+        <br><br><br><br><br>
+    </div>
+    <br>
     <div class="container">
         <h3 class="text-center">영화 목록</h3>
         <hr width="120px" color="yellow">
@@ -738,6 +749,21 @@ h3 {
 h3 {
     margin-top: 3rem;
     margin-bottom: 3rem;
+}
+
+
+.section {
+    font-style: italic;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    height: 350px;
+    width: 100%;
+    background-image: url('bono.jpg'),
+        linear-gradient(green, yellow);
+    background-size: cover;
+    /* background-blend-mode: saturation; */
+    background-blend-mode: difference;
+    filter: grayscale(10%);
 }
 ```
 

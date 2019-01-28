@@ -1,8 +1,26 @@
-.pointer {
+/* .pointer {
     style: cursor: pointer;
-}
+} */
 
 h3 {
     margin-top: 3rem;
     margin-bottom: 3rem;
+}
+
+.section {
+    font-style: italic;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    height: 350px;
+    width: 100%;
+    background-image: url('bono.jpg'),
+        linear-gradient(green, aqua);
+    background-size: cover;
+    background-blend-mode: saturation;
+    filter: grayscale(10%);
+}
+
+img.landscape {
+    width: 100%;
+    max-height: auto;
 }
