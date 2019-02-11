@@ -48,7 +48,6 @@ pyenv local {가상환경 이름}
 > c9은 기본적으로 workspace에서 git config가 가입한 이메일로 되어 있기 때문에, github에 커밋 기록을 제대로 남기기 위해서 설정해준다.
 
 ```
-git config global --user.name seunghoon2334
-git config global --user.email gogo12394@naver.com
+git config --global user.name seunghoon2334
+git config --global user.email gogo12394@naver.com
 ```
-
