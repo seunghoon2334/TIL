@@ -6,4 +6,4 @@ def era(n):
                 arr[j] = 0
     return [i for i in range(len(arr)) if arr[i]==1]
 
-print(era(100))
+print(era(1989382793874839))
