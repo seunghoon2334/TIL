@@ -20,7 +20,7 @@ for tc in range(1,11):
                 for j in range(1,V+1):
                     G[j][i]=0
 
-    result = f'#{tc} '
+    result = f'#{} '
     for i in range(len(a),0,-1):
         result += str(a[i-1]) + ' '
     print(result)
