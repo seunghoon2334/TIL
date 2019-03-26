@@ -11,6 +11,8 @@ def search(num):
             if ns[j]==num:
                 right = j
                 break
+        if i==n-1 and j==0:
+            return 0, 1
     elif ns[n//2] < num:
         for i in range(n//2,n):
             if ns[i]==num:
@@ -29,6 +31,7 @@ def search(num):
             if ns[j]==num:
                 right = i
                 break
+
     return i, j
 
 n = int(input())
