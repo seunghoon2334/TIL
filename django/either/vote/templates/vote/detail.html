@@ -1,0 +1,57 @@
+{% extends 'vote/base.html' %}
+{% block css %}
+<style>
+    .header {
+        height: 200px;
+        width: 100%;
+        background-color: yellow;
+    }
+    
+    .select {
+        height: 200px;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    <div class="header d-flex justify-content-center align-items-center">
+        <h1><b>{{question.title}}</b></h1>
+    </div>
+    <br>
+    <form action="{% url 'vote:select' question.pk %}">
+            <button type="submit" name="option" value="A" class="select btn btn-primary btn-lg btn-block d-inline"><h1>{{question.option_A}}</h1></button>
+            <button type="submit" name="option" value="B" class="select btn btn-danger btn-lg btn-block d-inline"><h1>{{question.option_B}}</h1></button>
+    </form>
+    <br>
+    <h1>{{question.option_A}} : {{select_A}}표 {{select_A_per | floatformat:2}}%</h1>
+    <h1>{{question.option_B}} : {{select_B}}표 {{select_B_per | floatformat:2}}%</h1>
+</div>
+<hr>
+<div class="container">
+<h1 class="my-5">댓글</h1>
+<form action="{% url 'vote:create_comment' question.pk %}" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="exampleInputEmail1"><h4 class="review">ID</h4></label>
+        <input type="text" class="form-control" name="user">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1"><h4 class="review">COMMENT</h4></label>
+        <input type="text" class="form-control" name="comment">
+    </div>
+    <button type="submit" class="btn btn-outline-dark">Go</button>
+</form>
+</div>
+<hr class="my-5">
+<div class="container">
+    <ul class="list-group list-group-flush mt-2">
+    {% for answer in answers %}
+        <li class="list-group-item list">
+            <h2>{{forloop.counter}} : {{answer.user}}</h2>
+            <h3>{{answer.comment}}</h3>
+            <p>{{answer.created_at}}</p>
+        </li>
+    {% endfor %}
+</div>
+{% endblock %}

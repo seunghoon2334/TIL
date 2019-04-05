@@ -1,0 +1,14 @@
+{% extends 'vote/base.html' %}
+
+{% block body %}
+<div class="container">
+<ul class="list-group list-group-flush">
+  <li class="list-group-item">
+      {% for question in questions %}
+      <h1><a href="{% url 'vote:detail' question.pk %}">{{question.title}}</a></h1>
+      <hr>
+      {% endfor %}
+  </li>
+</ul>
+</div>
+{% endblock %}

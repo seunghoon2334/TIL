@@ -1,0 +1,22 @@
+{% extends 'vote/base.html' %}
+
+{% block body %}
+<div class="container my-5">
+    <form method="POST">
+        {% csrf_token %}
+      <div class="form-group">
+        <label for="exampleInputEmail1"><h1>TITLE : </h1></label>
+        <input type="text" name="title">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1"><h2>&ensp;&ensp;&ensp;&ensp;&ensp;A : </h2></label>
+        <input type="text" name="option_A">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1"><h2>&ensp;&ensp;&ensp;&ensp;&ensp;B : </h2></label>
+        <input type="text" name="option_B">
+      </div>
+      <button type="submit" class="btn btn-primary text-right">Submit</button>
+    </form>
+</div>
+{% endblock %}
