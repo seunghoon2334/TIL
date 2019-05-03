@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id='app'>
+        <!-- v-model : data의 newTodo 값이 사용자가 입력하는 값으로 변경됨. -->
+        <input type='text' v-model='newTodo' v-on:keyup.enter='addNewTodo'> <br>
+        {{ newTodo }}
+        <ul>
+            <!-- v-for가 우선, v-if가 나중 -->
+            <li v-for='todo in todoList' v-if='!todo.completed'>
+                {{ todo.content }} <button v-on:click='check(todo)'>완료</button>
+            </li>
+            <li v-else><del>{{ todo.content }}</del><button v-on:click='check(todo)'>취소</button></li>
+        </ul>
+        <button v-on:click='allCompleted'>모두완료</button>
+        <button v-on:click='deleteTodo'>초기화</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                newTodo: '',
+                todoList: [
+                    { content: '쉬는 시간 놀기',
+                    completed: true
+                    },
+                    { content: '전골먹기',
+                    completed: false
+                    },
+                    { content: '약속의 2시',
+                    completed: false
+                    },
+                    { content: '중청사기',
+                    completed: false
+                    },
+                    { content: '마카롱먹기',
+                    completed: false
+                    },
+                    { content: '잠자기',
+                    completed: false
+                    }
+                ]
+            },
+            methods: {
+                check: function(todo) {
+                    todo.completed = !todo.completed
+                },
+                addNewTodo: function(todo) {
+                    // this : vue 오브젝트(app)
+                    // this.todoList : data의 todoList
+                    this.todoList.push({
+                        // this.newTodo : data의 newTodo (사용자가 입력을 한 값)
+                        content: this.newTodo,
+                        completed: false
+                    })
+                    this.newTodo = ''
+                },
+                deleteTodo: function(todo) {
+                    this.todoList = []
+                },
+                allCompleted: function() {
+                    this.todoList.forEach(function(todo) {
+                        todo.completed = true                        
+                    })
+                    // this.todoList.forEach(todo => {
+                    //     if (!todo.completed) {
+                    //         this.check(todo)
+                    //     }
+                    // })
+                }
+            }
+        })
+    </script>
+</body>
+</html>
