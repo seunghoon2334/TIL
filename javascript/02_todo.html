@@ -5,48 +5,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        .completed {
+            text-decoration: line-through;
+            color: rosybrown;
+            opacity: 0.2;
+        }
+    </style>
 </head>
 <body>
     <div id='app'>
         <!-- v-model : data의 newTodo 값이 사용자가 입력하는 값으로 변경됨. -->
         <input type='text' v-model='newTodo' v-on:keyup.enter='addNewTodo'> <br>
         {{ newTodo }}
+        <select v-model='status'>
+            <option value='all'>모두보기</option>
+            <option value='completed'>완료</option>
+            <option value='active'>할 일</option>
+        </select>
         <ul>
             <!-- v-for가 우선, v-if가 나중 -->
-            <li v-for='todo in todoList' v-if='!todo.completed'>
-                {{ todo.content }} <button v-on:click='check(todo)'>완료</button>
+            <!-- <li v-for='todo in todoList' v-if='!todo.completed'> -->
+            <li v-for='todo in todoListByStatus()' v-bind:key='todo.id'>
+                <input type='checkbox' v-model='todo.completed'>
+                <span :class='{completed: todo.completed}'>{{ todo.content }}</span>
+                <!-- <button v-on:click='check(todo)'>완료</button> -->
+                <button v-on:click='deleteTodo'>삭제</button>
             </li>
-            <li v-else><del>{{ todo.content }}</del><button v-on:click='check(todo)'>취소</button></li>
+            <!-- <li v-else>
+                <input type='checkbox' v-model='todo.copmpleted'>
+                <del>{{ todo.content }}</del>
+                <button v-on:click='check(todo)'>취소</button>
+            </li> -->
         </ul>
         <button v-on:click='allCompleted'>모두완료</button>
-        <button v-on:click='deleteTodo'>초기화</button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
+        const STORAGE_KEY = 'vue-todo-list'
+        const todoStorage = {
+            fetch: function() {
+                const todoList = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')
+                todoList.forEach(function(todo, index) {
+                    todo.id = index
+                })
+                return todoList
+            },
+            save: function(todoList) {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(todoList))
+            }
+        }
+
         const app = new Vue({
             el: '#app',
             data: {
                 newTodo: '',
-                todoList: [
-                    { content: '쉬는 시간 놀기',
-                    completed: true
-                    },
-                    { content: '전골먹기',
-                    completed: false
-                    },
-                    { content: '약속의 2시',
-                    completed: false
-                    },
-                    { content: '중청사기',
-                    completed: false
-                    },
-                    { content: '마카롱먹기',
-                    completed: false
-                    },
-                    { content: '잠자기',
-                    completed: false
-                    }
-                ]
+                status: 'all',
+                todoList: todoStorage.fetch()
+                // todoList: [
+                //     { id: 1,
+                //     content: '쉬는 시간 놀기',
+                //     completed: true
+                //     },
+                //     { id: 2,
+                //     content: '전골먹기',
+                //     completed: false
+                //     },
+                //     { id: 3,
+                //     content: '약속의 2시',
+                //     completed: false
+                //     },
+                //     { id: 4,
+                //     content: '중청사기',
+                //     completed: false
+                //     },
+                //     { id: 5,
+                //     content: '마카롱먹기',
+                //     completed: false
+                //     },
+                //     { id: 6,
+                //     content: '잠자기',
+                //     completed: false
+                //     }
+                // ]
             },
             methods: {
                 check: function(todo) {
@@ -57,13 +98,14 @@
                     // this.todoList : data의 todoList
                     this.todoList.push({
                         // this.newTodo : data의 newTodo (사용자가 입력을 한 값)
+                        id: ++this.todoList.uid,
                         content: this.newTodo,
                         completed: false
                     })
                     this.newTodo = ''
                 },
                 deleteTodo: function(todo) {
-                    this.todoList = []
+                    this.todoList.splice(this.todoList.indexOf(todo), 1)
                 },
                 allCompleted: function() {
                     this.todoList.forEach(function(todo) {
@@ -74,6 +116,31 @@
                     //         this.check(todo)
                     //     }
                     // })
+                },
+                todoListByStatus: function() {
+                    if ( this.status === 'completed') {
+                        // 각각을 확인하면서 status가 completed라면,
+                        // completed가 true만 리턴
+                        return this.todoList.filter((todo) => todo.completed)
+                    } else if (this.status === 'active') {
+                        // 각각을 확인하면서 status가 active라면,
+                        // completed가 falue만 리턴
+                        return this.todoList.filter((todo) => !todo.completed)
+                    } else {
+                        // all이면
+                        // 그대로 리턴
+                        return this.todoList
+                    }
+                }
+            },
+            watch: {
+                todoList: {
+                    handler: function() {
+                        todoStorage.save(this.todoList)
+                    },
+                    deep: true
+                    // deep true가 없다면, 단순히 해당하는 오브젝트([])에 값이 추가되거나 삭제 되는 경우만 watch
+                    // deep true 옵션을 통해 오브젝트([]) 안에 있는 오브젝트(nested object)의 변경 사항까지 watch
                 }
             }
         })

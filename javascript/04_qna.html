@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1 v-text='title'></h1>
+        <input v-model='question'><br>
+        <h2>{{ answer | answerCaplital }}</h2>
+        <img :src='imgurl'>
+    </div>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                title: '무엇이든 물어보세요',
+                question: '',
+                answer: '질문을 해주세요..',
+                imgurl: ''
+            },
+            // 데이터가 변화하는 것을 지켜보는 watch!
+            methods: {
+                getAnswer: function() {
+                    if (this.question[this.question.length-1] === '?') {
+                    axios.get('https://yesno.wtf/api')
+                        .then(response => response.data)
+                        .then(res => {
+                            console.log(res.answer)
+                            this.answer = res.answer
+                            this.imgurl = res.image
+                        })
+                        // if (response.data.answer === true) {
+                        //     console.log('true')
+                        // } else {
+                        //     console.log('false')
+                        // }
+                    } else {
+                        this.answer = '?로 질문을 마무리해주세요!'
+                        this.imgurl = ''
+                        return
+                    }
+                }
+            },
+            watch: {
+                question: function() {
+                    this.getAnswer()
+                }
+            },
+            filters: {
+                answerCaplital: function(answer) {
+                    if (answer === 'yes' || answer === 'no') {
+                        return answer.toUpperCase() + '!'
+                    } else {
+                        return answer
+                    }
+                    // return (answer === 'yes' || answer === 'no') ? answer.toUpperCase() + '!' : answer
+                }
+            }
+        })
+    </script>
+</body>
+</html>
