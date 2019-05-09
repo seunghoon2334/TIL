@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id='app'>
+        <ul v-for='music in musics'>
+            <h3>{{ music.id }} : {{ music.title }} - {{ music.artist_name }}</h3>
+            <input v-model='music.newComment' @keyup.enter='createComment(music)'>
+            <div v-for='comment in music.comment_set'>
+                <p>* {{ comment.content }}</p>
+            </div>
+            <hr>
+        </ul>
+    </div>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                musics: [],
+            },
+            mounted: function (){
+                this.getMusics()
+            },
+            methods: {
+                getMusics: function() {
+                    // axios를 통한 요청은 promise 객체를 리턴
+                    axios.get('http://django-intro-ridkdkdkr.c9users.io:8080/api/v1/musics/')
+                        // resolve되면, (성공하면) => then으로 처리
+                        .then(response => response.data)
+                        .then(data => {
+                            this.musics = data.map((music) => {
+                                return {...music, newComment: ''}
+                            })
+                        })
+                        // reject 되면, (실패하면) => catch에서 처리
+                        .catch(error => {
+                            console.log(error)
+                        })
+                },
+                createComment: function(music) {
+                    const data = {content: music.newComment}
+                    axios.post(`http://django-intro-ridkdkdkr.c9users.io:8080/api/v1/musics/${music.id}/comments/`, data)
+                        .then(response => {
+                            music.comment_set.push(response.data)
+                            music.newComment = ''
+                        })
+                        .catch(error => console.log(error))
+                }
+            }
+        })
+    </script>
+</body>
+</html>
