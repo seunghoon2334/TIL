@@ -1,0 +1,13 @@
+[user]
+	name = seunghoon2334
+	email = gogo12394@naver.com
+[core]
+    editor = nano
+    whitespace = off
+    excludesfile = ~/.gitignore
+[advice]
+    statusuoption = false
+[color]
+    ui = true
+[push]
+    default = current

@@ -1,0 +1,6 @@
+{% for movie in movies %}
+    <a href='{{movie.pk}}'>{{ movie.title }}</a>
+    <p>{{ movie.score }}</p>
+    <hr>
+{% endfor %}
+<a href="new/">새 영화</a>

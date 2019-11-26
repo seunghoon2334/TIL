@@ -1,0 +1,11 @@
+<h1>우리반 정보</h1>
+<h2>Teacher</h2>
+<ul>
+    <li>{{ teacher }}</li>
+</ul>
+<h2>Students</h2>
+<ul>
+    {% for name, value in classroom.items %}
+        <li>{{ name }}</li>
+    {% endfor %}
+</ul>

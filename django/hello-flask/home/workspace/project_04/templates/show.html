@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+영화수정 폼
+{% endblock %}
+
+{% block body %}
+    <p>*영화명  :  {{movie.title}}</p>
+    <p>*영화명(영문)  :  {{movie.title_en}}</p>
+    <p>*누적 관객수  :  {{movie.audience}}</p>
+    <p>*개봉일  :  {{movie.open_date}}</p>
+    <p>*장르  :  {{movie.genre}}</p>
+    <p>*관람등급  :  {{movie.watch_grade}}</p>
+    <p>*평점  :  {{movie.score}}</p>
+    <img src='{{movie.poster_url}}' width="35%" height="35%"> 
+    <br><br>
+    <p>*영화소개  :  {{movie.description}}</p>
+    
+    
+    <a href='/movies/'>목록 </a>
+    <a href='/movies/{{movie.id}}/edit/'>수정 </a>
+    <a href='/movies/{{movie.id}}/delete/'>삭제</a>
+    <hr>
+{% endblock %}

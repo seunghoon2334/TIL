@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1>리스트페이지</h1>
+<div class="row">
+{% for post in posts %}
+    <div class="card col-4" style="width: 18rem; height: 30rem; border-style:none">
+        <a href='{% url "posts:detail" post.pk %}'>
+            <img src="{{ post.image_set.first.file.url }}" class="card-img-top" alt="post.content" style='height: 18rem'>
+            <div class="card-body">
+                <h5 class="card-title">{{ post.content }}</h5>
+            </div>
+        </a>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+<form action="/movies/create/" method="POST">
+    {% csrf_token %}
+    영화명<input type="text" name="title"><br>
+    누적 관객수<input type="integer" name="audience"><br>
+    장르<input type="text" name="genre"><br>
+    평점<input type="float" name="score"><br>
+    포스터 이미지 URL<textarea name="poster_url"></textarea>
+    영화 소개<textarea name="description"></textarea>
+    <input type=submit>
+</form>

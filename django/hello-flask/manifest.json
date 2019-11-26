@@ -1,0 +1,12 @@
+{
+  "name": "hello-flask",
+  "id": "6711169",
+  "description": "",
+  "gitUrl": "",
+  "workspaceType": "default",
+  "dockerBaseImage": "cloud9/ws-default:2017-08-31T12-15-07Z",
+  "owner": {
+    "name": "ridkdkdkr",
+    "id": "2330185"
+  }
+}

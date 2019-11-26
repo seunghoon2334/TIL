@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<form method="POST">
+    {% csrf_token %}
+    {{ user_form.as_p }}
+    <input type="submit" value="프로필 수정">
+</form>
+{% endblock %}

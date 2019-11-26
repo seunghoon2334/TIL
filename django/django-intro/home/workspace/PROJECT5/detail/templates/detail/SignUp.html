@@ -1,0 +1,37 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block css2 %}
+    <style>
+        .square {
+            height: 50%;
+            width: 50%;
+        }
+        .sec {
+            width: 90%;
+            
+        }
+        .table {
+            margin-right: 20%;
+            margin-left: 20%;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container flex-row nav d-flex table col-md-6">
+        <div class="square sec col-6">
+            <img src="{% static 'detail/images/bono.jpg' %}") class="card-img-top" alt="bono">
+        </div>
+        <div class="square col-6">
+            <div>Email address</div><br>
+            <input type="text" name="emailaddress" size="100%" placeholder=" Enter email" autofocus><br><br>
+            <div>Name</div><br>
+            <input type="email" name="name" size="100%" placeholder=" Enter email"><br><br>
+            <div>Password</div><br>
+            <input type="password" name="password" size="100%" placeholder=" Password"><br><br>
+            <div>Password Confirm</div><br>
+            <input type="password" name="passwordConfirm" size="100%" placeholder=" Password"><br><br>
+            <input type="button" value="Submit" class="btn-primary">
+        </div>
+    </div>
+{% endblock %}

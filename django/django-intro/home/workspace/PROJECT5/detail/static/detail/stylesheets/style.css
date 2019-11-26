@@ -1,0 +1,5 @@
+.section {
+    height: 350px;
+    background-image: url("bono.jpg");
+    background-size: cover;
+}

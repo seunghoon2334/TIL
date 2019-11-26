@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+영화수정 폼
+{% endblock %}
+
+{% block body %}
+    <form action='/movies/{{movie.id}}/update/', method='POST'>
+        title : <input type='text' name='title', value='{{movie.title}}'> <br>
+        title_en : <input type='text' name='title_en', value='{{movie.title_en}}'> <br>
+        audience : <input type='number' name='audience', value='{{movie.audience}}'> <br>
+        open_date : <input type='date' name='open_date', value='{{movie.open_date}}'> <br>
+        genre : <input type='text' name='genre', value='{{movie.genre}}'> <br>
+        watch_grade : <input type='text' name='watch_grade', value='{{movie.watch_grade}}'> <br>
+        score : <input type='number' name='score', value='{{movie.score}}', min='0', max='10', step='0.01'> <br>
+        poster_url : <input type='text' name='poster_url', value='{{movie.poster_url}}'> <br>
+        description : <input type="textarea" name="description", value='{{movie.description}}'>> <br>
+        <input type='submit' value='수정'>
+    </form>
+{% endblock %}

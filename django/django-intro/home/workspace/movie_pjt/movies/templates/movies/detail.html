@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block body %}
+    <p>{{ movie.title }}</p>
+    <p>{{ movie.audience }}</p>
+    <img src='{{ movie.poster_url }}'>
+    <p>{{ movie.description }}</p>
+    <p>{{ movie.genre.name }}</p>
+    <p>댓글 작성 {{ scores.count }}</p>
+    <form action="{% url 'movies:score_create' movie.pk %}" method="POST">
+        {% csrf_token %}
+        내용 : <input type="text" name="content"><br>
+        점수 : <input type="integer" name="value"><br>
+        <input type="submit">
+    </form>
+    <hr>
+    {% for score in scores %}
+        <li>{{ score.user }}, {{ score.value }}점: {{ score.content }}
+            {% if score.user == user %}
+            <form action="{% url 'movies:score_delete' movie.pk score.pk %}" method="POST" style="display: inline" onsubmit="return confirm('삭제할거야?')">
+                {% csrf_token %}
+                <input type="submit" value="삭제">
+            </form>
+            {% endif %}
+        </li>
+    {% endfor %}
+{% endblock %}

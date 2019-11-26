@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block body %}
+    <h2>유저 정보</h2>
+    <p>{{ user_info.username }}</p>
+    <p>팔로잉 : {{ user_info.followings.all.count }}</p>
+    <p>팔로워 : {{ user_info.followers.all.count }}</p>
+    {% if user != user_info %}
+        {% if user in user_info.followers.all %}
+            <a href='{% url "accounts:follow" user_info.pk%}'>팔로우취소</a>
+        {% else %}
+            <a href='{% url "accounts:follow" user_info.pk%}'>팔로우</a>
+        {% endif %}
+    {% endif %}
+    <h2>영화추천</h2>
+    <h3>팔로우 평점 1등</h3>
+    {% for scoref in score_following %}
+        <h4>{{ scoref.user }}</h4>
+        <p>{{ scoref.content }}</p>
+        <p>{{ scoref.value }}</p>
+        <p>{{ scoref.movie.title }}</p>
+        <hr>
+    {% endfor %}
+    <h3>전체 평점 1등</h3>
+    <h4>{{ score_one.user }}</h4>
+    <p>{{ score_one.content }}</p>
+    <p>{{ score_one.value }}</p>
+    <p>{{ score_one.movie.title }}</p>
+    <h2>내가 작성한 평점</h2>
+    {% for score in scores %}
+        <hr>
+        <p>{{ score.content }}</p>
+        <p>{{ score.value }}</p>
+        <p>{{ score.movie.title }}</p>
+    {% endfor %}
+{% endblock %}

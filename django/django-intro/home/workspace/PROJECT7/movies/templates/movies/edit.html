@@ -1,0 +1,14 @@
+{% extends 'movies/base.html' %}
+
+{% block body %}
+<form method='POST'>
+    {% csrf_token %}
+    <input type='text' name='title' value={{movie.title}}>
+    <input type='text' name='audience' value={{movie.audience}}>
+    <input type='textarea' name='poster_url' value={{movie.poster_url}}>
+    <input type='textarea' name='description' value={{movie.description}}>
+    <input type='integer' name='genre_id' value={{movie.genre_id}}>
+    <input type='submit'>
+</form>
+<a href="{% url 'movies:index' %}">목록</a>
+{% endblock %}

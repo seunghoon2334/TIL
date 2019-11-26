@@ -1,0 +1,18 @@
+{% extends 'student/base.html' %}
+
+{% block body %}
+{% for stud in student %}
+    <p>{{ stud.name }}</p>
+    <p>{{ stud.email }}</p>
+    <p>{{ stud.birthday }}</p>
+    <p>{{ stud.age }}</p>
+    <a href="{% url 'student:detail' stud.pk %}">상세보기</a>
+    <a href="{% url 'student:edit' stud.pk %}">수정하기기</a>
+    <form action="{% url 'student:delete' stud.pk %}" method="POST" style='display: inline' onsubmit="return confirm('삭제할거야?')">
+        {% csrf_token %}
+        <input type='submit' value='삭제하기'>
+    </form>
+    <hr>
+{% endfor %}
+<a href="{% url 'student:new' %}">새로만들기</a>
+{% endblock %}

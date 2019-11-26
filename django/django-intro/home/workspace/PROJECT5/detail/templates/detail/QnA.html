@@ -1,0 +1,43 @@
+{% extends 'base2.html' %}
+
+{% block css2 %}
+    <style>
+        .square {
+            width: 80%;
+        }
+        .table {
+            margin-right: 20%;
+            margin-left: 20%;
+        }
+        .lh {
+            line-height: 2;
+        }
+        .ml {
+            margin-left: 10rem;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">Q & A</h1>
+    <div class="container mx-6">
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="validationDefault01">제목</label>
+                <input type="text" class="form-control" id="validationDefault01">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="validationDefault02">이메일</label>
+                <input type="email" class="form-control" id="validationDefault02">
+            </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-12 mb-3">
+                    <label for="validationDefault03">내용</label>
+                    <input type="text" class="form-control" id="validationDefault03">
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary ml" type="submit">Submit</button>
+    </div>
+{% endblock %}

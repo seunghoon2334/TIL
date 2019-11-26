@@ -1,0 +1,29 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block title %} 프로젝트 5 {% endblock %}
+
+{% block css2 %}
+    <style>
+        .section {
+            height: 350px;
+            background-image: url("{% static 'detail/images/bono.jpg' %}");
+            background-size: 100% cover;
+            text-align: center;
+        }
+        .marginr {
+            text-align: right;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="section text-center">
+        <h1><br><br><br>Header</h1>
+    </div>
+    <footer class="flex-row">
+        <div class="d-flex justify-content-between">
+          <p>sh</p>
+          <a href="#">위로</a>
+        </div>
+    </footer>
+{% endblock %}

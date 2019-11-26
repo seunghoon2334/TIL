@@ -1,0 +1,9 @@
+{% extends 'student/base.html' %}
+
+{% block body %}
+<p>name = {{ student.name }}</p>
+<p>email = {{ student.email }}</p>
+<p>birthday = {{ student.birthday }}</p>
+<p>age = {{ student.age }}</p>
+<a href="{% url 'student:index' %}">목록</a>
+{% endblock %}

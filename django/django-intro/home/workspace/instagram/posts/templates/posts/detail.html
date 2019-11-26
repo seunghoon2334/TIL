@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% block body %}
+    <p>{{ post.pk }}</p>
+    <!--<p>{{ post.content }}</p>-->
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            {% for image in post.image_set.all %}
+            <div class="carousel-item {% if forloop.counter == 1 %} active {% endif %}">
+                <img src="{{ image.file.url }}" class="d-block" width='600px' height='600px'>
+            </div>
+            {% endfor %}
+        </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    {% load hashtag_link %}
+    <p>{{ post|hashtag_link|safe }}</p>
+    {% for hashtag in hashtags %}
+        <a href="{% url 'posts:hashtag' hashtag.pk %}">{{ hashtag.content }} </a>
+    {% endfor %}
+    <br>
+    <i data-id='{{post.pk}}' class='{% if user in post.liked_users.all %} fas {% else %} far {% endif %} fa-heart fa-2x like-button' style='color:hotpink;'></i></a>
+    <span><span id='like-count-{{post.pk}}'>{{ post.like_count }}</span>명</span>
+    <a href='{% url "posts:edit" post.pk %}'>수정</a>
+    <a href='{% url "posts:delete" post.pk %}'>삭제</a>
+    <hr>
+    <p>댓글 작성 {{ comments.count }}</p>
+    <!--<form action="{% url 'posts:comment_create' post.pk %}" method="POST">-->
+    <!--    {% csrf_token %}-->
+    <!--    <input type="text" name="content">-->
+    <!--    <input type="submit">-->
+    <!--</form>-->
+    <form action="{% url 'posts:comment_create' post.pk %}" class="comment-form" method="POST">
+        {% csrf_token %}
+        {{ comment_form.as_p }}
+        <button type="submit" class="btn btn-primary">댓글 작성</button>
+    </form>
+        <div id="comment-{{ post.pk }}">
+          {% for comment in post.comment_set.all %}
+            <p>{{ comment.user.username}} : {{ comment.content }} 
+              <a href="{% url 'posts:comments_delete' post.pk comment.pk %}">[x]</a>
+            </p>
+          {% endfor %}
+{% endblock %}
+
+
+{% block script %}
+<script>
+    const likeButton = document.querySelector('.like-button')
+    // 이벤트가 발생하면
+    likeButton.addEventListener('click', function(e) {
+        const postId = e.target.dataset.id
+        // 장고 서버로 요청을 보내고
+        axios.get(`/posts/${postId}/like`)
+        // 성공하면, response에 장고에서 보낸 내용이 담겨있고, (JSON)
+        .then(function(response) {
+            // 실제 모습처럼 그린다. 새롭게(실제 로딩되었을 때의 화면과 동일)
+            const likeCount = document.querySelector(`#like-count-${postId}`)
+            likeCount.innerText = response.data.count
+            console.log(e.target)
+            if (response.data.is_like) {
+                e.target.classList.remove('far')
+                e.target.classList.add('fas')
+            } else {
+                e.target.classList.remove('fas')
+                e.target.classList.add('far')
+            }
+        })
+    })
+    const commentForms = document.querySelectorAll('.comment-form')
+        commentForms.forEach(function(form) {
+            form.addEventListener('submit', function(event){
+            event.preventDefault()
+            axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
+            // csrf_token을 위한 것
+            axios.defaults.xsrfCookieName = 'csrftoken'
+            axios.defaults.xsrfHeaderName = 'X-CSRFToken' 
+            const url = event.target.getAttribute('action')
+            const data = new FormData(event.target)
+            axios.post(url, data)
+                .then(function(response) {
+                    console.log(response)
+                    event.target.reset()
+                    const content = `<p>${response.data.username} : ${response.data.content} 
+                    <a href="/posts/${response.data.postPk}/${response.data.commentPk}/delete">[x]</a>
+                    </p>`
+                    const commentDiv = document.querySelector(`#comment-${response.data.postPk}`)
+                    commentDiv.insertAdjacentHTML('beforeend', content)
+                })
+        })
+    })
+</script>
+{% endblock %}

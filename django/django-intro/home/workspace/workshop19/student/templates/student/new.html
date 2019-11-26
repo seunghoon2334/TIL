@@ -1,0 +1,12 @@
+{% extends 'student/base.html' %}
+
+{% block body %}
+<form action="{% url 'student:new' %}" method='POST'>
+    {% csrf_token %}
+    <input type='text' name='name'>
+    <input type='email' name='email'>
+    <input type='date' name='birthday'>
+    <input type='number' name='age'>
+    <input type='submit'>
+</form>
+{% endblock %}

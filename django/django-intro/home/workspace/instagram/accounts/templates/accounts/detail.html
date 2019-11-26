@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <p>{{ user_info.username }}</p>
+    <div class='follow-count'>
+        <p>팔로잉 : {{ user_info.followings.all.count }}</p>
+        <p>팔로워 : {{ user_info.followers.all.count }}</p>
+    </div>
+    {% if user != user_info %}
+        {% if user in user_info.followers.all %}
+            <a id='follow-button' href='{% url "accounts:follow" user_info.pk%}'>팔로우취소</a>
+        {% else %}
+            <a id='follow-button' href='{% url "accounts:follow" user_info.pk%}'>팔로우</a>
+        {% endif %}
+    {% endif %}
+{% endblock %}
+
+
+{% block script %}
+<script>
+    if (document.querySelector('#follow-button')) {
+    const followButton = document.querySelector('#follow-button')
+    followButton.addEventListener('click', function(e) {
+        e.preventDefault()
+        const url = e.target.getAttribute('href')
+        // is_ajax() True 를 위한 것
+        axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
+        // csrf_token을 위한 것
+        axios.defaults.xsrfCookieName = 'csrftoken'
+        axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+        // csrftoken을 Header에 담을 때 X-CSRFToken 으로 보내라고 Django에 설정되어 있음.
+        axios.post(url)
+            .then(function(response) {
+                const followCountDiv = document.querySelector('.follow-count')
+                followCountDiv.children[0].innerText = `팔로잉 : ${response.data.followingcount}`
+                followCountDiv.children[1].innerText = `팔로워 : ${response.data.followercount}`
+                e.target.innerText = response.data.is_follow ? '팔로우취소': '팔로우'
+            })
+    })
+    }
+</script>
+{% endblock %}

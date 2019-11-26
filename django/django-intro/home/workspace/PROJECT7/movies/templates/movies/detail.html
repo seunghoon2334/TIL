@@ -1,0 +1,38 @@
+{% extends 'movies/base.html' %}
+
+{% block body %}
+<p>{{movie.id}}</p>
+<p>{{movie.title}}</p>
+<p>{{movie.audience}}</p>
+<img src='{{movie.poster_url}}'>
+<p>{{movie.description}}</p>
+<p>{{movie.genre.name}}</p>
+<hr>
+<a href="{% url 'movies:index' %}">목록</a>
+<a href="{% url 'movies:edit' movie.pk %}">수정</a>
+<form action="{% url 'movies:delete' movie.pk %}" method="POST" style='display: inline' onsubmit="return confirm('삭제할거야?')">
+    {% csrf_token %}
+    <input type='submit' value='삭제'>
+</form>
+<hr>
+
+<p>댓글 작성 {{ comments.count }}</p>
+<form action="{% url 'movies:score_new' movie.pk %}" method="POST">
+    {% csrf_token %}
+    <input type="text" name="content">
+    <input type="float" name="score">
+    <input type="submit">
+</form>
+
+<hr>
+{% for comment in comments %}
+    <li>{{ forloop.counter }} : {{ comment.content }}, {{ comment.score }}점
+        <form action="{% url 'movies:score_delete' movie.pk comment.pk %}" method="POST" style="display: inline" onsubmit="return confirm('삭제할거야?')">
+            {% csrf_token %}
+            <input type="submit" value="삭제">
+        </form>
+    </li>
+{% empty %}
+    <b><p>댓글이 없어요ㅠ_ㅠ</p></b>
+{% endfor %}
+{% endblock %}
